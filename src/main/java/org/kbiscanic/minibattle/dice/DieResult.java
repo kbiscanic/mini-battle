@@ -1,8 +1,8 @@
-package org.kbiscanic.dice;
+package org.kbiscanic.minibattle.dice;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import org.kbiscanic.dice.implementations.*;
+import org.kbiscanic.minibattle.dice.implementations.*;
 
 import java.util.List;
 import java.util.Map;

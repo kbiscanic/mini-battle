@@ -1,4 +1,4 @@
-package org.kbiscanic.armies;
+package org.kbiscanic.minibattle.armies;
 
 /*
  * MELEE - Lightsaber (10 dmg)

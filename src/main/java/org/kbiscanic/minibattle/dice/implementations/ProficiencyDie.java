@@ -1,21 +1,21 @@
-package org.kbiscanic.dice.implementations;
+package org.kbiscanic.minibattle.dice.implementations;
 
-import org.kbiscanic.dice.Die;
-import org.kbiscanic.dice.DieResult;
+import org.kbiscanic.minibattle.dice.Die;
+import org.kbiscanic.minibattle.dice.DieResult;
 
 import java.util.Random;
 
-public class AbilityDie implements Die {
+public class ProficiencyDie implements Die {
 
     private static final Random RANDOM = new Random();
 
-    private static final AbilityDie instance = new AbilityDie();
+    private static final ProficiencyDie instance = new ProficiencyDie();
 
-    private AbilityDie() {
+    private ProficiencyDie() {
 
     }
 
-    public static AbilityDie getInstance() {
+    public static ProficiencyDie getInstance() {
         return instance;
     }
 
@@ -23,7 +23,7 @@ public class AbilityDie implements Die {
     public DieResult roll() {
         DieResult result = null;
 
-        switch (RANDOM.nextInt(8)) {
+        switch (RANDOM.nextInt(12)) {
             case 0:
                 result = new DieResult(0, 0, 0, 0, 0, 0);
                 break;
@@ -32,17 +32,23 @@ public class AbilityDie implements Die {
                 result = new DieResult(1, 0, 0, 0, 0, 0);
                 break;
             case 3:
+            case 4:
                 result = new DieResult(2, 0, 0, 0, 0, 0);
                 break;
-            case 4:
             case 5:
                 result = new DieResult(0, 1, 0, 0, 0, 0);
                 break;
             case 6:
+            case 7:
+            case 8:
                 result = new DieResult(1, 1, 0, 0, 0, 0);
                 break;
-            case 7:
+            case 9:
+            case 10:
                 result = new DieResult(0, 2, 0, 0, 0, 0);
+                break;
+            case 11:
+                result = new DieResult(0, 0, 1, 0, 0, 0);
         }
 
         return result;

@@ -1,8 +1,8 @@
-package org.kbiscanic.armies;
+package org.kbiscanic.minibattle.armies;
 
 import com.google.common.collect.Maps;
-import org.kbiscanic.dice.DieResult;
-import org.kbiscanic.dice.DieSymbol;
+import org.kbiscanic.minibattle.dice.DieResult;
+import org.kbiscanic.minibattle.dice.DieSymbol;
 
 import java.util.Map;
 import java.util.Optional;

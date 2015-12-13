@@ -1,11 +1,11 @@
-package org.kbiscanic;
+package org.kbiscanic.minibattle;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
-import org.kbiscanic.armies.*;
-import org.kbiscanic.armies.Character;
-import org.kbiscanic.dice.DieResult;
-import org.kbiscanic.dice.DieSymbol;
+import org.kbiscanic.minibattle.armies.*;
+import org.kbiscanic.minibattle.armies.Character;
+import org.kbiscanic.minibattle.dice.DieResult;
+import org.kbiscanic.minibattle.dice.DieSymbol;
 
 import java.util.Map;
 import java.util.Queue;

@@ -1,7 +1,7 @@
-package org.kbiscanic.dice.implementations;
+package org.kbiscanic.minibattle.dice.implementations;
 
-import org.kbiscanic.dice.Die;
-import org.kbiscanic.dice.DieResult;
+import org.kbiscanic.minibattle.dice.Die;
+import org.kbiscanic.minibattle.dice.DieResult;
 
 import java.util.Random;
 

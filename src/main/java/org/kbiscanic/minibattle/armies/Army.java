@@ -1,4 +1,4 @@
-package org.kbiscanic.armies;
+package org.kbiscanic.minibattle.armies;
 
 import com.google.common.collect.Lists;
 

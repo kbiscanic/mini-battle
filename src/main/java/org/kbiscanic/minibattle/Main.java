@@ -1,7 +1,7 @@
-package org.kbiscanic;
+package org.kbiscanic.minibattle;
 
-import org.kbiscanic.armies.Army;
-import org.kbiscanic.armies.Team;
+import org.kbiscanic.minibattle.armies.Army;
+import org.kbiscanic.minibattle.armies.Team;
 
 public class Main {
 

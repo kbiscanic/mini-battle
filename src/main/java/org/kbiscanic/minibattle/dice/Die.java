@@ -1,4 +1,4 @@
-package org.kbiscanic.dice;
+package org.kbiscanic.minibattle.dice;
 
 public interface Die {
 

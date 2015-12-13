@@ -1,21 +1,21 @@
-package org.kbiscanic.dice.implementations;
+package org.kbiscanic.minibattle.dice.implementations;
 
-import org.kbiscanic.dice.Die;
-import org.kbiscanic.dice.DieResult;
+import org.kbiscanic.minibattle.dice.Die;
+import org.kbiscanic.minibattle.dice.DieResult;
 
 import java.util.Random;
 
-public class ChallengeDie implements Die {
+public class DifficultyDie implements Die {
 
     private static final Random RANDOM = new Random();
 
-    private static final ChallengeDie instance = new ChallengeDie();
+    private static final DifficultyDie instance = new DifficultyDie();
 
-    private ChallengeDie() {
+    private DifficultyDie() {
 
     }
 
-    public static ChallengeDie getInstance() {
+    public static DifficultyDie getInstance() {
         return instance;
     }
 
@@ -23,32 +23,26 @@ public class ChallengeDie implements Die {
     public DieResult roll() {
         DieResult result = null;
 
-        switch (RANDOM.nextInt(12)) {
+        switch (RANDOM.nextInt(8)) {
             case 0:
                 result = new DieResult(0, 0, 0, 0, 0, 0);
                 break;
             case 1:
-            case 2:
                 result = new DieResult(0, 0, 0, 1, 0, 0);
+                break;
+            case 2:
+                result = new DieResult(0, 0, 0, 2, 0, 0);
                 break;
             case 3:
             case 4:
-                result = new DieResult(0, 0, 0, 2, 0, 0);
-                break;
             case 5:
-            case 6:
                 result = new DieResult(0, 0, 0, 0, 1, 0);
                 break;
-            case 7:
-            case 8:
-                result = new DieResult(0, 0, 0, 1, 1, 0);
-                break;
-            case 9:
-            case 10:
+            case 6:
                 result = new DieResult(0, 0, 0, 0, 2, 0);
                 break;
-            case 11:
-                result = new DieResult(0, 0, 0, 0, 0, 1);
+            case 7:
+                result = new DieResult(0, 0, 0, 1, 1, 0);
         }
 
         return result;
