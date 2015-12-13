@@ -14,6 +14,8 @@ public class Character {
 
     private Map<Characteristic, Integer> characteristics = Maps.newEnumMap(Characteristic.class);
 
+    private Team team;
+
     private String name;
 
     private int experience = 0;
@@ -24,7 +26,10 @@ public class Character {
 
     private int strain = 0;
 
-    public Character(String name, int skillPoints) {
+    private Weapon weapon;
+
+    public Character(Team team, String name, int skillPoints) {
+        this.team = team;
         this.name = name;
 
         characteristics.put(Characteristic.AGILITY, 1);
@@ -41,8 +46,13 @@ public class Character {
 
             skillPoints--;
         }
+
+        weapon = Weapon.values()[RANDOM.nextInt(Weapon.values().length)];
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
 
     public String getName() {
         return name;
@@ -72,6 +82,8 @@ public class Character {
         }
         wound += damage - getSoak();
 
+        System.out.println(this + " receives " + (damage - getSoak()) + " damage.");
+
         return wound >= getWoundTreshold();
     }
 
@@ -81,10 +93,15 @@ public class Character {
         return strain >= getStrainTreshold();
     }
 
+    public void recoverStrain(int strain) {
+        this.strain = Math.max(this.strain - strain, 0);
+    }
+
     public void gainExperience(int experience) {
+        System.out.println(this + " gains " + experience + " experience.");
         this.experience += experience;
 
-        if (this.experience > this.level * 10) {
+        if (this.experience > (this.level + 1) * 10) {
             levelUp();
         }
     }
@@ -92,7 +109,7 @@ public class Character {
     public int getInitiative() {
         DieResult dieResult = DieResult.rollAll(0, getCharacteristic(Characteristic.WILLPOWER), 0, 0, 0, 0);
 
-        System.out.println(name + " rolls for initiative: " + dieResult.toString());
+//        System.out.println(this + " rolls for initiative: " + dieResult.toString());
 
         return dieResult.getResult(DieSymbol.SUCCESS) + 2 * dieResult.getResult(DieSymbol.ADVANTAGE);
     }
@@ -100,12 +117,17 @@ public class Character {
     public int getThreat() {
         DieResult dieResult = DieResult.rollAll(0, getCharacteristic(Characteristic.PRESENCE), 0, 0, 0, 0);
 
-        System.out.println(name + " rolls for threat: " + dieResult.toString());
+//        System.out.println(this + " rolls for threat: " + dieResult.toString());
 
         return dieResult.getResult(DieSymbol.SUCCESS) + 2 * dieResult.getResult(DieSymbol.ADVANTAGE);
     }
 
-    public void levelUp() {
+    public boolean isStrained() {
+        return strain >= getStrainTreshold();
+    }
+
+    private void levelUp() {
+        System.out.println(this + " gains additional level.");
         level++;
         experience = 0;
 
@@ -114,14 +136,19 @@ public class Character {
         characteristics.put(characteristic, getCharacteristic(characteristic) + 1);
     }
 
+    public int getLevel() {
+        return level;
+    }
+
     @Override
     public String toString() {
-        return name + " {" +
+        return team + " " + name + " {" +
                 "characteristics=" + characteristics +
                 ", experience=" + experience +
                 ", level=" + level +
                 ", wound=" + wound +
                 ", strain=" + strain +
-                "}\n";
+                ", weapon=" + weapon +
+                '}';
     }
 }

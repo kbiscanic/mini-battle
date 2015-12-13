@@ -11,30 +11,37 @@ public class Army {
 
     private List<Character> characters = Lists.newArrayList();
 
-    private String name;
+    private Team team;
 
-    public Army(String name, int numSoldiers, int skillPoints) {
-        this.name = name;
+    public Army(Team team, int numSoldiers, int skillPoints) {
+        this.team = team;
 
         for (int i = 1; i <= numSoldiers; i++) {
-            characters.add(new Character(name + " " + i, skillPoints));
+            characters.add(new Character(team, Integer.toString(i), skillPoints));
         }
     }
 
     public List<Character> determineInitiative() {
+        System.out.println("Team " + team + " rolls for initiative...");
+
         PriorityQueue<Character> initiative = new PriorityQueue<>();
 
         return characters.stream().map(c -> new CharacterValue(c, c.getInitiative())).sorted().map(cv -> cv.character).collect(Collectors.toList());
     }
 
     public List<Character> determineThreat() {
+        System.out.println("Team " + team + " rolls for threat...");
         PriorityQueue<Character> initiative = new PriorityQueue<>();
 
-        return characters.stream().map(c -> new CharacterValue(c, c.getInitiative())).sorted().map(cv -> cv.character).collect(Collectors.toList());
+        return characters.stream().map(c -> new CharacterValue(c, c.getThreat())).sorted().map(cv -> cv.character).collect(Collectors.toList());
     }
 
     public boolean isAlive(Character character) {
         return characters.contains(character);
+    }
+
+    public int alive() {
+        return characters.size();
     }
 
     public void kill(Character character) {
@@ -43,7 +50,7 @@ public class Army {
 
     @Override
     public String toString() {
-        return "Army " + name + " {" +
+        return "Army " + team + " {" +
                 "characters=\n " + characters +
                 '}';
     }
