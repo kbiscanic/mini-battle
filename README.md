@@ -1,7 +1,7 @@
 # mini-battle
 ### Description
 This project simulates mini battle of 2 armies, each consisting of N soldiers.
-Soldiers are generated and battle is simulated using**very**simplified version
+Soldiers are generated and battle is simulated using **very** simplified version
 of [Star Wars: Age of Rebellion RPG (FFG)](https://www.fantasyflightgames.com/en/products/star-wars-age-of-rebellion/)
 core rules.
 
